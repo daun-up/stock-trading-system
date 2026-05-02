@@ -15,4 +15,9 @@ public class SystemController {
                 "project", "stock-trading-system"
         ));
     }
+
+    @GetMapping("/")
+    public ApiResponse<Map<String, String>> root() {
+        return health();
+    }
 }

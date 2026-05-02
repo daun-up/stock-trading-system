@@ -38,7 +38,9 @@
   잔고 차감과 같은 경쟁 구간에서 정합성이 깨지지 않도록 제어 전략을 실험합니다.
 
 자세한 내용은 [docs/architecture.md](docs/architecture.md)에서 볼 수 있습니다.
+Kafka와 Redis 선택 이유는 [docs/kafka-redis-selection.md](docs/kafka-redis-selection.md)에서 볼 수 있습니다.
 초기 환경 구성과 전환 이력은 [docs/setup-history.md](docs/setup-history.md)에서 볼 수 있습니다.
+AWS 프리티어 배포 방향과 보안 기준은 [docs/aws-free-tier-deployment.md](docs/aws-free-tier-deployment.md)에서 볼 수 있습니다.
 
 ## Current Scope
 
@@ -64,6 +66,7 @@
 │   │       ├── application.yml
 │   │       └── db/migration
 ├── docker-compose.yml
+├── Dockerfile
 ├── build.gradle
 ├── settings.gradle
 ├── gradlew
@@ -111,6 +114,21 @@ curl -X POST http://localhost:8080/api/orders \
     "idempotencyKey": "order-001"
   }'
 ```
+
+## Deployment Notes
+
+운영 배포에서는 비밀번호, API key, AWS key를 코드나 설정 파일에 직접 쓰지 않습니다.
+`application-prod.yml`은 아래 환경변수만 읽습니다.
+
+```bash
+SPRING_PROFILES_ACTIVE=prod
+SPRING_DATASOURCE_URL=jdbc:postgresql://<rds-endpoint>:5432/stock_trading_system
+SPRING_DATASOURCE_USERNAME=<db-user>
+SPRING_DATASOURCE_PASSWORD=<db-password>
+```
+
+실제 값은 GitHub가 아니라 AWS/서버 환경변수 또는 Secrets Manager/Parameter Store에 둡니다.
+로컬 예시는 `.env.example`만 커밋하고, 실제 `.env`는 커밋하지 않습니다.
 
 ## Next Steps
 

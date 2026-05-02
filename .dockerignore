@@ -1,0 +1,16 @@
+.git
+.gradle
+build
+target
+.idea
+.vscode
+.DS_Store
+
+.env
+.env.*
+!.env.example
+
+*.pem
+*.key
+*.p12
+*.jks

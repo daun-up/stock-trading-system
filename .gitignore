@@ -3,3 +3,18 @@
 /.gradle/
 /.idea/
 /.DS_Store
+/.vscode/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+
+# AWS/local credentials must stay outside the repository.
+.aws/
+aws-credentials*
+credentials
