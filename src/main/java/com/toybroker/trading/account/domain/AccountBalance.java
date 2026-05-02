@@ -32,7 +32,7 @@ public class AccountBalance {
 
     public void reserveCash(BigDecimal amount) {
         if (availableCash.compareTo(amount) < 0) {
-            throw new IllegalStateException("Insufficient available cash");
+            throw new InsufficientCashException(availableCash, amount);
         }
 
         this.availableCash = this.availableCash.subtract(amount);

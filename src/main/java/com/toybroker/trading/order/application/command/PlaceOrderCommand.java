@@ -14,7 +14,7 @@ public record PlaceOrderCommand(
         @NotNull OrderSide side,
         @NotNull OrderType orderType,
         @NotNull @DecimalMin("0.0001") BigDecimal quantity,
-        BigDecimal price,
+        @DecimalMin("0.0001") BigDecimal price,
         @NotBlank String idempotencyKey
 ) {
 }

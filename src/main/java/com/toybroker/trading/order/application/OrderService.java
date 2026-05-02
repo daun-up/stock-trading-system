@@ -10,10 +10,10 @@ import com.toybroker.trading.order.domain.OrderRepository;
 import com.toybroker.trading.order.domain.OrderSide;
 import com.toybroker.trading.outbox.domain.OutboxEvent;
 import com.toybroker.trading.outbox.domain.OutboxEventRepository;
-import jakarta.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.Map;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class OrderService {
@@ -49,8 +49,10 @@ public class OrderService {
     }
 
     private OrderResult createNewOrder(PlaceOrderCommand command) {
+        validateSupportedOrder(command);
+
         AccountBalance balance = accountBalanceRepository.findById(command.accountId())
-                .orElseThrow(() -> new IllegalArgumentException("Account balance not found"));
+                .orElseThrow(() -> new AccountBalanceNotFoundException(command.accountId()));
 
         if (command.side() == OrderSide.BUY) {
             BigDecimal reserveAmount = calculateReserveAmount(command);
@@ -91,9 +93,18 @@ public class OrderService {
         );
     }
 
+    private void validateSupportedOrder(PlaceOrderCommand command) {
+        if (command.side() == OrderSide.SELL) {
+            throw new InvalidOrderException("Sell order is not supported until positions are implemented");
+        }
+    }
+
     private BigDecimal calculateReserveAmount(PlaceOrderCommand command) {
         if (command.price() == null) {
-            throw new IllegalArgumentException("Buy order requires a price in this initial version");
+            throw new InvalidOrderException("Buy order requires a price in this initial version");
+        }
+        if (command.price().compareTo(BigDecimal.ZERO) <= 0) {
+            throw new InvalidOrderException("Order price must be greater than zero");
         }
         return command.price().multiply(command.quantity());
     }
