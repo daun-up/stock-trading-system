@@ -20,7 +20,7 @@
 - Redis
 - Kafka
 - Flyway
-- Maven
+- Gradle
 
 ## Architecture Focus
 
@@ -62,7 +62,8 @@
 │   │       ├── application.yml
 │   │       └── db/migration
 ├── docker-compose.yml
-└── pom.xml
+├── build.gradle
+└── settings.gradle
 ```
 
 ## Getting Started
@@ -76,7 +77,7 @@ docker compose up -d
 ### 2. Run the application
 
 ```bash
-mvn spring-boot:run
+./gradlew bootRun
 ```
 
 ### 3. Health check
@@ -118,6 +119,8 @@ curl -X POST http://localhost:8080/api/orders \
 
 ## Notes
 
-- 현재는 Maven 기반 프로젝트입니다.
+- 현재는 Gradle 기반 프로젝트입니다.
+- 이 환경에는 `gradle`이 설치되어 있지 않아 wrapper 파일(`gradlew`, `gradle/wrapper/*`)은 아직 생성하지 못했습니다.
+- 로컬에 Gradle이 설치된 환경에서는 `gradle wrapper` 실행 후 `./gradlew bootRun`으로 고정해서 쓰는 것을 추천합니다.
 - Docker DB 이름은 `stock_trading_system`입니다.
 - 의존성 다운로드와 원격 푸시는 환경에 따라 별도 권한 또는 인증이 필요할 수 있습니다.
