@@ -40,6 +40,7 @@
 자세한 내용은 [docs/architecture.md](docs/architecture.md)에서 볼 수 있습니다.
 Kafka와 Redis 선택 이유는 [docs/kafka-redis-selection.md](docs/kafka-redis-selection.md)에서 볼 수 있습니다.
 초기 환경 구성과 전환 이력은 [docs/setup-history.md](docs/setup-history.md)에서 볼 수 있습니다.
+Postman과 Swagger UI 테스트 방법은 [docs/api-testing.md](docs/api-testing.md)에서 볼 수 있습니다.
 AWS 프리티어 배포 방향과 보안 기준은 [docs/aws-free-tier-deployment.md](docs/aws-free-tier-deployment.md)에서 볼 수 있습니다.
 
 ## Current Scope
