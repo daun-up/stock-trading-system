@@ -38,6 +38,7 @@
   잔고 차감과 같은 경쟁 구간에서 정합성이 깨지지 않도록 제어 전략을 실험합니다.
 
 자세한 내용은 [docs/architecture.md](docs/architecture.md)에서 볼 수 있습니다.
+초기 환경 구성과 전환 이력은 [docs/setup-history.md](docs/setup-history.md)에서 볼 수 있습니다.
 
 ## Current Scope
 
@@ -54,7 +55,8 @@
 ```text
 .
 ├── docs
-│   └── architecture.md
+│   ├── architecture.md
+│   └── setup-history.md
 ├── src
 │   ├── main
 │   │   ├── java/com/toybroker/trading
@@ -63,7 +65,9 @@
 │   │       └── db/migration
 ├── docker-compose.yml
 ├── build.gradle
-└── settings.gradle
+├── settings.gradle
+├── gradlew
+└── gradle/wrapper
 ```
 
 ## Getting Started
@@ -120,7 +124,7 @@ curl -X POST http://localhost:8080/api/orders \
 ## Notes
 
 - 현재는 Gradle 기반 프로젝트입니다.
-- 이 환경에는 `gradle`이 설치되어 있지 않아 wrapper 파일(`gradlew`, `gradle/wrapper/*`)은 아직 생성하지 못했습니다.
-- 로컬에 Gradle이 설치된 환경에서는 `gradle wrapper` 실행 후 `./gradlew bootRun`으로 고정해서 쓰는 것을 추천합니다.
+- Gradle wrapper가 포함되어 있어 `./gradlew` 기준으로 실행하면 됩니다.
+- 로컬 머신에는 `Gradle 9.5.0`이 설치되어 있고, wrapper도 같은 버전으로 생성되어 있습니다.
 - Docker DB 이름은 `stock_trading_system`입니다.
 - 의존성 다운로드와 원격 푸시는 환경에 따라 별도 권한 또는 인증이 필요할 수 있습니다.
