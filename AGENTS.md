@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # AGENTS.md
 
 ## 프로젝트 목적
@@ -71,7 +73,11 @@ curl http://localhost:8080/api/system/health
 예상 응답 형식:
 
 ```json
-{"success":true,"data":{"status":"UP","project":"stock-trading-system"},"message":null}
+{
+  "success": true,
+  "data": { "status": "UP", "project": "stock-trading-system" },
+  "message": null
+}
 ```
 
 ## 검증 규칙
@@ -191,11 +197,9 @@ type(scope): subject
 예시:
 
 ```text
-feat(order): add idempotent order placement flow
-fix(account): prevent negative cash reservation
-docs(readme): update local run instructions
-test(order): add duplicate order request coverage
-chore(gradle): align wrapper usage in docs
+feat(order): API 추가
+fix(account): Account 갱신 안 되던 문제 수정
+docs(readme): 아키텍처 관련 문서 추가
 ```
 
 여러 성격의 변경이 섞이면 기능 또는 사용자 영향이 큰 쪽을 기준으로 `type`을 정한다.

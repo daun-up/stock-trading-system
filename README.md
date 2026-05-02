@@ -38,10 +38,12 @@
   잔고 차감과 같은 경쟁 구간에서 정합성이 깨지지 않도록 제어 전략을 실험합니다.
 
 자세한 내용은 [docs/architecture.md](docs/architecture.md)에서 볼 수 있습니다.
+현재 ERD는 [docs/erd.md](docs/erd.md)에서 볼 수 있습니다.
 Kafka와 Redis 선택 이유는 [docs/kafka-redis-selection.md](docs/kafka-redis-selection.md)에서 볼 수 있습니다.
 초기 환경 구성과 전환 이력은 [docs/setup-history.md](docs/setup-history.md)에서 볼 수 있습니다.
 Postman과 Swagger UI 테스트 방법은 [docs/api-testing.md](docs/api-testing.md)에서 볼 수 있습니다.
 AWS 프리티어 배포 방향과 보안 기준은 [docs/aws-free-tier-deployment.md](docs/aws-free-tier-deployment.md)에서 볼 수 있습니다.
+완료한 일과 다음 작업 체크리스트는 [docs/project-checklist.md](docs/project-checklist.md)에서 관리합니다.
 
 ## Current Scope
 
@@ -133,12 +135,7 @@ SPRING_DATASOURCE_PASSWORD=<db-password>
 
 ## Next Steps
 
-- 체결 엔진 흐름 추가
-- 주문/체결/잔고 조회 모델 보강
-- outbox publisher 구현
-- 동시성 테스트 추가
-- Redis 기반 조회 최적화 실험
-- Kafka consumer 및 재처리 전략 보강
+다음 작업은 [docs/project-checklist.md](docs/project-checklist.md)에서 체크리스트로 관리합니다.
 
 ## Notes
 
